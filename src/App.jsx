@@ -1,9 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 export default function App() {
     const [opened, setOpened] = useState(false);
     const [videoEnded, setVideoEnded] = useState(false);
+    const videoRef = useRef(null);
+
+    useEffect(() => {
+        if (opened && videoRef.current) {
+            videoRef.current.play().catch(() => {});
+        }
+    }, [opened]);
 
     // Responsive dimensions
     const getEnvelopeSize = () => {
@@ -122,8 +129,7 @@ export default function App() {
                             }}
                         >
                             <video
-                                autoPlay
-                                muted
+                                ref={videoRef}
                                 onEnded={() => setVideoEnded(true)}
                                 style={{
                                     maxWidth: "100%",
@@ -133,7 +139,7 @@ export default function App() {
                                     display: "block",
                                 }}
                             >
-                                <source src="/invitatie.mp4" type="video/mp4" />
+                                <source src="/invitatie.mov" type="video/mp4" />
                             </video>
                             {videoEnded && (
                                 <button
