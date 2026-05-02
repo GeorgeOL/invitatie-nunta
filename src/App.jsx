@@ -67,70 +67,13 @@ export default function App() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
+            perspective: "1000px",
             position: "relative",
             overflow: "hidden",
             margin: 0,
             padding: 0,
             backgroundColor: "#111"
         }}>
-            {/* VIDEOUL - în afara containerului cu perspective */}
-            {opened && (
-                <motion.div
-                    initial={{ y: "100vh", opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    style={{
-                        position: "fixed",
-                        top: 0,
-                        left: 0,
-                        width: "100vw",
-                        height: "100vh",
-                        zIndex: 100,
-                        backgroundColor: "#000",
-                    }}
-                >
-                    <video
-                        ref={videoRef}
-                        onEnded={() => setVideoEnded(true)}
-                        style={{
-                            position: "absolute",
-                            top: 0,
-                            left: 0,
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "cover",
-                        }}
-                    >
-                        <source src="/invitatieBUN.mp4" type="video/mp4" />
-                    </video>
-                    {videoEnded && (
-                        <button
-                            onClick={() => {
-                                setVideoEnded(false);
-                                setOpened(false);
-                                setTimeout(() => setOpened(true), 50);
-                            }}
-                            style={{
-                                position: "absolute",
-                                bottom: "10%",
-                                left: "50%",
-                                transform: "translateX(-50%)",
-                                fontSize: "1.4rem",
-                                fontFamily: "Amoresa, cursive",
-                                background: "none",
-                                color: "white",
-                                border: "none",
-                                outline: "none",
-                                cursor: "pointer",
-                                padding: 0,
-                                whiteSpace: "nowrap"
-                            }}
-                        >
-                            ▶ Vizioneaza din nou
-                        </button>
-                    )}
-                </motion.div>
-            )}
 
             {/* Container principal */}
             <div style={{
@@ -152,8 +95,7 @@ export default function App() {
                     height: envelopeSize.height,
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
-                    perspective: "1000px"
+                    justifyContent: "center"
                 }}>
                     {/* BAZA PLICULUI */}
                     <div style={{
@@ -167,6 +109,66 @@ export default function App() {
                         left: 0
                     }} />
 
+                    {/* VIDEOUL DIN INTERIOR */}
+                    {opened && (
+                        <motion.div
+                            initial={{ y: "100vh", opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            style={{
+                                position: "fixed",
+                                top: 0,
+                                left: 0,
+                                width: "100vw",
+                                height: "100vh",
+                                zIndex: 100,
+                                backgroundColor: "#000",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                            }}
+                        >
+                            <video
+                                ref={videoRef}
+                                onEnded={() => setVideoEnded(true)}
+                                style={{
+                                    maxWidth: "100%",
+                                    maxHeight: "100%",
+                                    width: "auto",
+                                    height: "auto",
+                                    display: "block",
+                                }}
+                            >
+                                <source src="/invitaie-muzica22.mp4" type="video/mp4" />
+                            </video>
+                            {videoEnded && (
+                                <button
+                                    onClick={() => {
+                                        setVideoEnded(false);
+                                        setOpened(false);
+                                        setTimeout(() => setOpened(true), 50);
+                                    }}
+                                    style={{
+                                        position: "absolute",
+                                        bottom: "10%",
+                                        left: "50%",
+                                        transform: "translateX(-50%)",
+                                        fontSize: "1.4rem",
+                                        fontFamily: "Amoresa, cursive",
+                                        background: "none",
+                                        color: "white",
+                                        border: "none",
+                                        outline: "none",
+                                        cursor: "pointer",
+                                        padding: 0,
+                                        whiteSpace: "nowrap"
+                                    }}
+                                >
+                                    ▶ Vizioneaza din nou
+                                </button>
+                            )}
+                        </motion.div>
+                    )}
 
                     {/* TRIUNGHI STÂNGA */}
                     <div style={{
