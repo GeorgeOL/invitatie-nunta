@@ -139,7 +139,7 @@ export default function App() {
                                     display: "block",
                                 }}
                             >
-                                <source src="/invitaie-muzica22.mp4" type="video/mp4" />
+                                <source src="/invitatieBUN.mp4" type="video/mp4" />
                             </video>
                             {videoEnded && (
                                 <button
