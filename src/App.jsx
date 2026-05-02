@@ -8,8 +8,6 @@ export default function App() {
     const getEnvelopeSize = () => {
         if (typeof window !== "undefined") {
             const width = window.innerWidth;
-            const height = window.innerHeight;
-            
             // Telefoane mici
             if (width < 360) {
                 return { width: "80vw", height: "50vh" };
@@ -96,7 +94,7 @@ export default function App() {
                         position: "absolute",
                         width: "100%",
                         height: "100%",
-                        background: "#d2a679",
+                        background: "linear-gradient(90deg, #000000 0%, #808080 100%)",
                         borderRadius: "8px",
                         zIndex: 2,
                         top: 0,
@@ -138,6 +136,44 @@ export default function App() {
                         </motion.div>
                     )}
 
+                    {/* TRIUNGHI STÂNGA */}
+                    <div style={{
+                        position: "absolute",
+                        width: "100%",
+                        height: "100%",
+                        background: "linear-gradient(90deg, #000000 0%, #606060 100%)",
+                        clipPath: "polygon(0 0, 0 100%, 50% 50%)",
+                        zIndex: 3,
+                        top: 0,
+                        left: 0,
+                        opacity: 0.85
+                    }} />
+
+                    {/* TRIUNGHI DREAPTA */}
+                    <div style={{
+                        position: "absolute",
+                        width: "100%",
+                        height: "100%",
+                        background: "linear-gradient(90deg, #404040 0%, #808080 100%)",
+                        clipPath: "polygon(100% 0, 100% 100%, 50% 50%)",
+                        zIndex: 3,
+                        top: 0,
+                        left: 0,
+                        opacity: 0.85
+                    }} />
+
+                    {/* TRIUNGHI JOS */}
+                    <div style={{
+                        position: "absolute",
+                        width: "100%",
+                        height: "100%",
+                        background: "linear-gradient(90deg, #1a1a1a 0%, #707070 100%)",
+                        clipPath: "polygon(0 100%, 100% 100%, 50% 50%)",
+                        zIndex: 3,
+                        top: 0,
+                        left: 0
+                    }} />
+
                     {/* CLAPETA (ANIMATĂ) */}
                     <motion.div
                         onClick={() => setOpened(true)}
@@ -148,7 +184,7 @@ export default function App() {
                             position: "absolute",
                             width: "100%",
                             height: "100%",
-                            background: "#c19a6b",
+                            background: "linear-gradient(90deg, #000000 0%, #808080 100%)",
                             clipPath: "polygon(0 0, 50% 60%, 100% 0)",
                             transformOrigin: "top",
                             zIndex: 3,
