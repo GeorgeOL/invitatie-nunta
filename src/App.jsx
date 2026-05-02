@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 
 export default function App() {
     const [opened, setOpened] = useState(false);
+    const [videoEnded, setVideoEnded] = useState(false);
 
     // Responsive dimensions
     const getEnvelopeSize = () => {
@@ -123,6 +124,7 @@ export default function App() {
                             <video
                                 autoPlay
                                 muted
+                                onEnded={() => setVideoEnded(true)}
                                 style={{
                                     maxWidth: "100%",
                                     maxHeight: "100%",
@@ -133,6 +135,32 @@ export default function App() {
                             >
                                 <source src="/invitatie.mp4" type="video/mp4" />
                             </video>
+                            {videoEnded && (
+                                <button
+                                    onClick={() => {
+                                        setVideoEnded(false);
+                                        setOpened(false);
+                                        setTimeout(() => setOpened(true), 50);
+                                    }}
+                                    style={{
+                                        position: "absolute",
+                                        bottom: "10%",
+                                        left: "50%",
+                                        transform: "translateX(-50%)",
+                                        fontSize: "1.4rem",
+                                        fontFamily: "Amoresa, cursive",
+                                        background: "none",
+                                        color: "white",
+                                        border: "none",
+                                        outline: "none",
+                                        cursor: "pointer",
+                                        padding: 0,
+                                        whiteSpace: "nowrap"
+                                    }}
+                                >
+                                    ▶ Vizioneaza din nou
+                                </button>
+                            )}
                         </motion.div>
                     )}
 
