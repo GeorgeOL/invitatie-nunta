@@ -101,7 +101,7 @@ export default function App() {
                             objectFit: "cover",
                         }}
                     >
-                        <source src="/invitaie-muzica22.mp4" type="video/mp4" />
+                        <source src="/invitatieBUN.mp4" type="video/mp4" />
                     </video>
                     {videoEnded && (
                         <button
