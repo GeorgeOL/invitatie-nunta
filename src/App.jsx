@@ -67,7 +67,6 @@ export default function App() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            perspective: "1000px",
             position: "relative",
             overflow: "hidden",
             margin: 0,
@@ -153,7 +152,8 @@ export default function App() {
                     height: envelopeSize.height,
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center"
+                    justifyContent: "center",
+                    perspective: "1000px"
                 }}>
                     {/* BAZA PLICULUI */}
                     <div style={{
